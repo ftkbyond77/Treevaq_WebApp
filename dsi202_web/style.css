@@ -1,0 +1,240 @@
+/* Reset styles */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Background */
+body {
+    background: #eaf7e4;  /* สีเขียวอ่อน */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #4CAF50; /* เขียวเข้ม */
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+    padding: 5px;
+    border: 1px solid #388E3C; /* ขอบสีเขียวเข้ม */
+    border-radius: 5px;
+}
+
+/* Icons */
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.icons a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Menu */
+.menu {
+    background: #66BB6A; /* สีเขียวกลาง */
+    padding: 10px;
+    text-align: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+/* Advertisement */
+.advertisement {
+    background: #A5D6A7; /* สีเขียวอ่อน */
+    padding: 50px;
+    text-align: center;
+    color: #2E7D32; /* เขียวเข้ม */
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between; /* กระจายเต็มจอ */
+    width: 80%; /* ปรับขนาดให้พอดี */
+    margin: 20px auto; /* จัดให้อยู่ตรงกลาง */
+}
+
+.category-item {
+    width: 30%; /* ทำให้แต่ละอันกว้าง 30% ของหน้าจอ */
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 120px;
+    background-color: #C8E6C9; /* สีเทาแทนรูป */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #388E3C; /* สีข้อความ */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* Main Layout */
+main {
+    display: flex;
+    padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #DCEDC8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover {
+    background-color: #2E7D32;
+}
+
+/* Product List */
+.product-list {
+    width: 80%;
+    padding-left: 20px;
+}
+
+.product-list h2 {
+    color: #1B5E20;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF; /* สีขาว */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #81C784; /* ขอบสีเขียวอ่อน */
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product:hover {
+    background: #E8F5E9; /* เขียวอ่อน */
+}
+
+.product-img {
+    width: 50px;
+    height: 50px;
+    background: #A5D6A7; /* สีเขียวอ่อน */
+    margin-right: 15px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #1B5E20;
+}
+
+.product-info p {
+    margin-bottom: 5px;
+}
+.product-link {
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    color: inherit; /* ใช้สีเดิมของข้อความ */
+    display: block; /* ให้คลิกได้ทั้งบล็อก */
+}
+
+/* แสดงผลสำหรับหน้าจอเล็ก (มือถือ) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-item {
+        width: 80%;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .product-list {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 80%;
+    }
+}
+

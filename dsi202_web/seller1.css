@@ -1,0 +1,488 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Reset styles */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Background */
+body {
+    background: white;  /* สีเขียวอ่อน */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #4CAF50; /* เขียวเข้ม */
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+    padding: 5px;
+    border: 1px solid #388E3C; /* ขอบสีเขียวเข้ม */
+    border-radius: 5px;
+}
+
+/* Icons */
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.icons a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Menu */
+.menu {
+    background: #66BB6A; /* สีเขียวกลาง */
+    padding: 10px;
+    text-align: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.amazon-logo {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.location-selector {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.country {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.location-icon {
+    margin-right: 5px;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    max-width: 650px;
+    height: 40px;
+    margin: 0 15px;
+}
+
+.dropdown {
+    background-color: #f3f3f3;
+    color: #555;
+    padding: 8px 10px;
+    border-radius: 4px 0 0 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-button {
+    background-color: #febd69;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* Navigation Right Side */
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.flag-icon {
+    margin-right: 5px;
+}
+
+.account-section, .orders-section {
+    margin-right: 15px;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.account-menu, .orders-menu {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cart-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    background-color: #f08804;
+    color: #131921;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+.cart-icon {
+    margin-right: 5px;
+}
+
+/* Sub Navigation */
+.sub-nav {
+    background-color: #232f3e;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+.menu-icon {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+}
+
+.menu-icon span::before,
+.menu-icon span::after {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+}
+
+.menu-icon span::before {
+    top: -5px;
+}
+
+.menu-icon span::after {
+    bottom: -5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-left: 20px;
+}
+
+.nav-links li {
+    margin-right: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.shipping-info {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+/* Main Content */
+main {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Seller Banner */
+.seller-banner {
+    background-color: #eaf7e4;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.banner-content h1 {
+    font-size: 22px;
+    margin-right: 30px;
+    color: #232f3e;
+}
+
+.incentive {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 30px;
+}
+
+.checkmark-icon {
+    margin-right: 10px;
+}
+
+.learn-more {
+    color: #007185;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.signup-button {
+    background-color: #ff7000;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Seller Info Section */
+.seller-info {
+    background-color: #eaf7e4;
+    padding: 30px 0;
+    margin-bottom: 20px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.info-text {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.large-heading {
+    font-size: 42px;
+    color: #0f1111;
+    margin-bottom: 40px;
+    max-width: 600px;
+    line-height: 1.2;
+}
+
+.signup-button-large {
+    background-color: #ff7000;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.incentive-large {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #232f3e;
+}
+
+.info-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.showcase-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Stats Container */
+.stats-container {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 15px;
+}
+
+.stats-text {
+    font-size: 28px;
+    color: #0f1111;
+    line-height: 1.4;
+}
+
+.stats-intro {
+    font-weight: normal;
+}
+
+.stats-highlight {
+    font-weight: bold;
+}
+
+.stats-result {
+    font-weight: normal;
+}
+
+.right {
+    width: 50%;
+    text-align: right;
+}
+
+#treevaq-logo {
+    font-size: 5rem;  /* ขยายขนาดตัวอักษร */
+    margin: 0;
+    color: #66BB6A;
+}
+.info {
+    font-weight: bold;        
+    display: flex;             
+    justify-content: left;  
+    padding: 0 20px;          
+    font-size: 1rem;
+    padding-top: 10px;
+}
+
+.info h3, .info p {
+    margin: 0;                
+}
+/* สไตล์สำหรับรีวิว */
+.reviews-section {
+    background-color: white;
+    padding: 40px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.reviews-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.review {
+    background-color: #eaf7e4;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: left;
+}
+
+.review p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.author {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 100px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .review {
+        font-size: 0.9rem;
+    }
+}

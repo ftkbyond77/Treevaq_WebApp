@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treevaq - ระบบชำระเงิน</title>
+    <link rel="stylesheet" href="payment1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">🌱Treevaq</div>
+            <input type="text" class="search-bar" placeholder="Search for eco-friendly products...">
+            <div class="icons">
+                <a href="cart1.html" target="_blank" class="cart-link">
+                    <span class="cart-icon">🛒</span>
+                </a>               
+                <a href="profile.html" target="_blank">Profile</a> | <a href="order1.html">Order</a>
+                <select>
+                    <option>EN</option>
+                    <option>TH</option>
+                </select>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="#">All</a>
+            <a href="e2e2.html" target="_blank">Best Sellers</a>
+            <a href="#">Sustainable Licenses</a>
+            <a href="#">Eco Promotions</a>
+            <a href="#">Green Services</a>
+            <a href="#">Recycled Electronics</a>
+            <a href="#">Mystery Box</a>
+            <a href="seller1.html" target="_blank">Sell</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="payment-section">
+            <div class="container">
+                <h1 class="page-title">Payment</h1>
+                
+                <div class="payment-container">
+                    <div class="payment-main">
+                        <div class="payment-form">
+                            <div class="form-group shipping-info">
+                                <h2>Address</h2>
+                                <div class="input-group">
+                                    <label for="fullname">Name <span class="required">*</span></label>
+                                    <input type="text" id="fullname" required>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label for="phone">Tell <span class="required">*</span></label>
+                                        <input type="tel" id="phone" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="email">E-Mail <span class="required">*</span></label>
+                                        <input type="email" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="address">Address <span class="required">*</span></label>
+                                    <textarea id="address" rows="3" required></textarea>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label for="province">State <span class="required">*</span></label>
+                                        <select id="province" required>
+                                            <option value="">State Choose</option>
+                                            <option value="กรุงเทพมหานคร">Alabama</option>
+                                            <option value="เชียงใหม่">Alaska</option>
+                                            <option value="ขอนแก่น">California</option>
+                                            <option value="ภูเก็ต">South Dakota</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="zipcode">Zip-Code <span class="required">*</span></label>
+                                        <input type="text" id="zipcode" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="note">Optional</label>
+                                    <textarea id="note" rows="2"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group payment-methods-section">
+                                <h2>Payment Method</h2>
+                                <div class="payment-methods">
+                                    <div class="payment-method">
+                                        <input type="radio" id="credit-card" name="payment-method" checked>
+                                        <label for="credit-card">
+                                            <span class="method-name">Credit/Debit Card</span>
+                                            <div class="card-icons">
+                                                <i class="fab fa-cc-visa"></i>
+                                                <i class="fab fa-cc-mastercard"></i>
+                                                <i class="fab fa-cc-jcb"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="payment-method">
+                                        <input type="radio" id="bank-transfer" name="payment-method">
+                                        <label for="bank-transfer">
+                                            <span class="method-name">Banking</span>
+                                        </label>
+                                    </div>
+                                    <div class="payment-method">
+                                        <input type="radio" id="promptpay" name="payment-method">
+                                        <label for="promptpay">
+                                            <span class="method-name">Mobile Banking</span>
+                                            <img src="/api/placeholder/40/40" alt="PromptPay" class="method-icon">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="credit-card-form" class="payment-details">
+                                    <div class="input-group">
+                                        <label for="card-number">Card Number <span class="required">*</span></label>
+                                        <input type="text" id="card-number" placeholder="xxxx xxxx xxxx xxxx" required>
+                                    </div>
+                                    <div class="input-row">
+                                        <div class="input-group">
+                                            <label for="expiry">Expired date <span class="required">*</span></label>
+                                            <input type="text" id="expiry" placeholder="MM/YY" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="cvv">CVV Code <span class="required">*</span></label>
+                                            <input type="text" id="cvv" placeholder="xxx" required>
+                                            <span class="info-tooltip" title="รหัส 3 หลักด้านหลังบัตร">
+                                                <i class="fas fa-question-circle"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="card-name">Name on Card <span class="required">*</span></label>
+                                        <input type="text" id="card-name" required>
+                                    </div>
+                                    <div class="secure-payment">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Your information safety by SSL 256-bit</span>
+                                    </div>
+                                </div>
+
+                                <div id="bank-transfer-form" class="payment-details hidden">
+                                    <div class="bank-details">
+                                        <h3>Payment Details</h3>
+                                        <div class="bank-account-info">
+                                            <div class="bank-logo">
+                                                <img src="/api/placeholder/50/50" alt="ธนาคารกสิกรไทย">
+                                            </div>
+                                            <div class="bank-text">
+                                                <p><strong>ธนาคาร:</strong> ธนาคารกสิกรไทย</p>
+                                                <p><strong>ชื่อบัญชี:</strong> บริษัท ทรีแวค จำกัด</p>
+                                                <p><strong>เลขที่บัญชี:</strong> 123-4-56789-0</p>
+                                                <p><strong>สาขา:</strong> สุขุมวิท</p>
+                                            </div>
+                                        </div>
+                                        <div class="upload-area">
+                                            <label for="payment-slip">อัพโหลดสลิปการโอนเงิน <span class="required">*</span></label>
+                                            <div class="file-upload">
+                                                <input type="file" id="payment-slip" required>
+                                                <label for="payment-slip" class="file-label">
+                                                    <i class="fas fa-upload"></i>
+                                                    <span>เลือกไฟล์</span>
+                                                </label>
+                                                <span class="file-name">ยังไม่ได้เลือกไฟล์</span>
+                                            </div>
+                                            <p class="file-help">รองรับไฟล์ .jpg, .png, .pdf ขนาดไม่เกิน 2MB</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="promptpay-form" class="payment-details hidden">
+                                    <div class="promptpay-details">
+                                        <h3>รายละเอียดพร้อมเพย์</h3>
+                                        <div class="promptpay-info">
+                                            <p><strong>พร้อมเพย์:</strong> บริษัท ทรีแวค จำกัด</p>
+                                            <p><strong>หมายเลข:</strong> 0891234567</p>
+                                            <p><strong>หรือสแกน QR Code ด้านล่าง</strong></p>
+                                        </div>
+                                        <div class="qr-container">
+                                            <img src="/api/placeholder/180/180" alt="QR Code พร้อมเพย์" class="qr-code">
+                                        </div>
+                                        <div class="upload-area">
+                                            <label for="promptpay-slip">อัพโหลดสลิปการโอนเงิน <span class="required">*</span></label>
+                                            <div class="file-upload">
+                                                <input type="file" id="promptpay-slip" required>
+                                                <label for="promptpay-slip" class="file-label">
+                                                    <i class="fas fa-upload"></i>
+                                                    <span>เลือกไฟล์</span>
+                                                </label>
+                                                <span class="file-name">ยังไม่ได้เลือกไฟล์</span>
+                                            </div>
+                                            <p class="file-help">รองรับไฟล์ .jpg, .png, .pdf ขนาดไม่เกิน 2MB</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="summary-header">
+                            <h2>Summary Detail</h2>
+                            <button class="edit-cart-btn">Edit</button>
+                        </div>
+                        
+                        <div class="summary-items">
+                            <div class="cart-item">
+                                <div class="item-image">
+                                    <img src="/api/placeholder/80/80" alt="T-Shirt">
+                                    <span class="item-quantity">1</span>
+                                </div>
+                                <div class="item-details">
+                                    <h3 class="item-name">T-Shirt</h3>
+                                    <p class="item-desc">Black Color, px</p>
+                                    <p class="item-price">$20</p>
+                                </div>
+                            </div>
+                            
+                            <div class="cart-item">
+                                <div class="item-image">
+                                    <img src="/api/placeholder/80/80" alt="T-Shirt">
+                                    <span class="item-quantity">2</span>
+                                </div>
+                                <div class="item-details">
+                                    <h3 class="item-name">T-Shirt (Supreme)</h3>
+                                    <p class="item-desc">Black Color, Supreme</p>
+                                    <p class="item-price">$120</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="coupon-section">
+                            <div class="input-group">
+                                <input type="text" id="coupon-code" placeholder="use discount">
+                                <button class="apply-coupon">discount</button>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Total Price:</span>
+                                <span class="subtotal">$140</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Discount:</span>
+                                <span class="discount">-฿0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping:</span>
+                                <span class="shipping">$5.59</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total Price:</span>
+                                <span class="final-total">$145.59
+                            </div>
+                        </div>
+                        
+                        <div class="eco-impact">
+                            <i class="fas fa-leaf"></i>
+                            <p>การสั่งซื้อนี้ช่วยลดคาร์บอนได้ 2.5 kg และจะปลูกต้นไม้ 3 ต้น</p>
+                        </div>
+                        
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="accept-terms" required>
+                            <label for="accept-terms">I read and accept conditions <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        
+                        <button class="confirm-payment-btn">Confirm and Pay Orders</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="payment-methods-footer">
+                    <p>Accepted Payment Methods</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-jcb"></i>
+                        <img src="/api/placeholder/40/20" alt="Mobile Banking" class="payment-logo">
+                    </div>
+                </div>
+                <div class="secure-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Safety Payment 100%</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Treevaq. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="payment-script.js"></script>
+</body>
+</html>

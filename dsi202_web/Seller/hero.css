@@ -1,0 +1,14 @@
+.hero {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.brand {
+    color: #00aaff;
+    font-weight: bold;
+}
+
+.divider {
+    border-top: 2px solid #ccc;  /* สีเทาอ่อน */
+    margin: 20px 0;  /* ระยะห่างด้านบนและล่าง */
+}

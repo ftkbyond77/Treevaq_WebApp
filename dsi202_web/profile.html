@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treevaq - My Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #4CAF50; /* เขียวเข้ม */
+            color: white;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            padding: 5px;
+            border: 1px solid #388E3C; /* ขอบสีเขียวเข้ม */
+            border-radius: 5px;
+        }
+        
+        /* Icons */
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icons a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .icons a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Navigation Menu */
+        .menu {
+            background: #66BB6A; /* สีเขียวกลาง */
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: #e0f2e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2e7d32;
+        }
+        
+        .profile-info h2 {
+            margin-bottom: 5px;
+            color: #2e7d32;
+        }
+        
+        .eco-points {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a.active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .nav-links a:hover {
+            background-color: #f0f7f0;
+        }
+        
+        .nav-icon {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .section-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background-color: #2e7d32;
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #2e7d32;
+            color: #2e7d32;
+        }
+        
+        .eco-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: #f0f7f0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 5px 0;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .eco-badge {
+            width: 60px;
+            height: 60px;
+            margin: 10px auto;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid #2e7d32;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px 0;
+        }
+        
+        .order-list {
+            list-style: none;
+        }
+        
+        .order-item {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-products {
+            margin: 10px 0;
+        }
+        
+        .order-product {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .product-img {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f7f0;
+            margin-right: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+        }
+        
+        .order-total {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .status-delivered {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .status-processing {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        
+        .wishlist-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .wishlist-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .wishlist-img {
+            height: 150px;
+            background-color: #f0f7f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+        }
+        
+        .wishlist-info {
+            padding: 10px;
+        }
+        
+        .wishlist-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .wishlist-price {
+            color: #2e7d32;
+        }
+        
+        .eco-tag {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        .tabs .tab a {
+            text-decoration: none; /* ลบขีดใต้ */
+            color: inherit; /* ใช้สีเดียวกับข้อความในแท็บ */
+        }
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .sidebar, .main-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">🌱Treevaq</div>
+            <input type="text" class="search-bar" placeholder="Search for eco-friendly products...">
+            <div class="icons">
+                <a href="cart1.html" target="_blank" class="cart-link">
+                    <span class="cart-icon">🛒</span>
+                </a>               
+                <a href="#">Thananan</a> | <a href="#">Order</a>
+                <select>
+                    <option>EN</option>
+                    <option>TH</option>
+                </select>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="#">All</a>
+            <a href="e2e2.html" target="_blank">Best Sellers</a>
+            <a href="#">Sustainable Licenses</a>
+            <a href="#">Eco Promotions</a>
+            <a href="#">Green Services</a>
+            <a href="#">Recycled Electronics</a>
+            <a href="#">Mystery Box</a>
+            <a href="seller1.html" target="_blank">Sell</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="sidebar">
+                <div class="profile-header">
+                    <div class="profile-pic">TN</div>
+                    <div class="profile-info">
+                        <h2>Thananan</h2>
+                        <p>thananan@email.com</p>
+                        <span class="eco-points">🍃 240 Eco Points</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#" class="active"><span class="nav-icon">👤</span> Profile</a></li>
+                    <li><a href="order1.html"><span class="nav-icon">📦</span> Orders</a></li>
+                    <li><a href="#"><span class="nav-icon">❤️</span> List Orders</a></li>
+                    <li><a href="#"><span class="nav-icon">🌱</span> Environmental impact</a></li>
+                    <li><a href="#"><span class="nav-icon">🔔</span> Notification</a></li>
+                    <li><a href="#"><span class="nav-icon">⚙️</span> Setting</a></li>
+                    <li><a href="account1.html" style="color: #d32f2f;"><span class="nav-icon">🚪</span> Log-out</a></li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab('profile')">Profile</div>
+                    <div class="tab"><a href="order1.html">Orders</a></div>
+                    <div class="tab" onclick="openTab('wishlist')">List Orders</div>
+                    <div class="tab" onclick="openTab('eco-impact')">Environmental impact</div>
+                </div>
+                
+                <div id="profile" class="tab-content">
+                    <h3 class="section-title">Profile</h3>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label for="fullname">Name</label>
+                            <input type="text" id="fullname" class="form-control" value="ธัญนันท์ นวลศรี">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" class="form-control" value="thananan@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Tell</label>
+                                <input type="tel" id="phone" class="form-control" value="088-XXX-XXXX">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="birthdate">Birth Date</label>
+                                <input type="date" id="birthdate" class="form-control" value="1995-06-15">
+                            </div>
+                            
+                            
+                            <h3 class="section-title">Shipping Address</h3>
+                            
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea id="address" class="form-control">123/45 หมู่บ้านเดอะพาร์ค ถนนพหลโยธิน แขวงลาดยาว เขตจตุจักร กรุงเทพมหานคร 10900</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="province">State</label>
+                                <select id="province" class="form-control">
+                                    <option selected>กรุงเทพมหานคร</option>
+                                    <option>เชียงใหม่</option>
+                                    <option>ภูเก็ต</option>
+                                    <option>ขอนแก่น</option>
+                                    <option>สงขลา</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="province">Country</label>
+                                <select id="province" class="form-control">
+                                    <option selected>Thailand</option>
+                                    <option>United State</option>
+                                    <option>United Kingdom</option>
+                                    <option>Spain</option>
+                                    <option>France</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postal-code">Zip-Code</label>
+                                <input type="text" id="postal-code" class="form-control" value="10900">
+                            </div>
+                            
+                            <h3 class="section-title">Environmental preferenc</h3>
+                            
+                            <div class="form-group">
+                                <label>Interested eco-friendly product categories</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="organic" name="eco-interest" checked>
+                                    <label for="organic">Organic products</label>
+                                    
+                                    <input type="checkbox" id="recycled" name="eco-interest" checked>
+                                    <label for="recycled">Recycled products</label>
+                                    
+                                    <input type="checkbox" id="zero-waste" name="eco-interest" checked>
+                                    <label for="zero-waste">Zero waste products</label>
+                                    
+                                    <input type="checkbox" id="energy-saving" name="eco-interest">
+                                    <label for="energy-saving">Energy-efficient products</label>
+                                    
+                                    <input type="checkbox" id="sustainable-fashion" name="eco-interest">
+                                    <label for="sustainable-fashion">Sustainable fashion</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="carbon-goal">Annual carbon footprint target (kg CO2)</label>
+                                <input type="number" id="carbon-goal" class="form-control" value="800">
+                            </div>
+                            
+                            <div class="buttons">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="reset" class="btn btn-secondary">Cancle</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+</body>
+</html>

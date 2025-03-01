@@ -1,0 +1,14 @@
+.logo-section {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.logo {
+    background: #ff4444;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 30px;
+    width: 200px;
+    text-align: center;
+}

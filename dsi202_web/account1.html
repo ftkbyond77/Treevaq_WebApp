@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treevaq - Sign In</title>
+    <style>
+        :root {
+            --primary-green: #2e8b57;
+            --light-green: #8fbc8f;
+            --dark-green: #006400;
+            --accent-green: #98fb98;
+            --background: #f5f5f5;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .logo-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--primary-green);
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            max-width: 90%;
+            margin-bottom: 40px;
+            border-top: 5px solid var(--primary-green);
+        }
+        
+        h1 {
+            margin-top: 0;
+            color: var(--dark-green);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-green);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 5px rgba(46, 139, 87, 0.3);
+        }
+        
+        .continue-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .continue-btn:hover {
+            background-color: var(--dark-green);
+        }
+        
+        .terms {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .terms a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        
+        .divider {
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+        
+        .help-dropdown {
+            margin-top: 15px;
+            cursor: pointer;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-icon {
+            margin-right: 5px;
+        }
+        
+        .business-section {
+            margin-top: 20px;
+        }
+        
+        .business-link {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .business-link:hover {
+            text-decoration: underline;
+        }
+        
+        .create-account-btn {
+            background-color: white;
+            color: var(--dark-green);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .create-account-btn:hover {
+            background-color: #f5f5f5;
+            border-color: var(--primary-green);
+        }
+        
+        .eco-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--dark-green);
+            text-align: center;
+        }
+        
+        .eco-badge {
+            background-color: var(--light-green);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .password-field {
+            display: none;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .help-dropdown-content {
+            display: none;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            padding: 15px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        
+        .help-dropdown-content a {
+            color: var(--primary-green);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .help-dropdown-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.5s, fadeOut 0.5s 2.5s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes slideIn {
+            from {transform: translateX(100%); opacity: 0;}
+            to {transform: translateX(0); opacity: 1;}
+        }
+        
+        @keyframes fadeOut {
+            from {opacity: 1;}
+            to {opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">
+            <span class="logo-icon">🌱</span> Treevaq
+        </div>
+        <div class="eco-badge">Sustainable Shopping</div>
+    </div>
+    
+    <div id="toast" class="toast"></div>
+    
+    <div class="form-container">
+        <form id="loginForm">
+            <h1>Sign in</h1>
+            
+            <label for="email">Email or mobile phone number</label>
+            <input type="text" id="email" name="email" required>
+            <div id="emailError" class="error-message">Please enter a valid email or phone number</div>
+            
+            <div id="passwordSection" class="password-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <div id="passwordError" class="error-message">Password must be at least 6 characters</div>
+            </div>
+            
+            <button type="submit" class="continue-btn" id="continueBtn">Continue</button>
+            
+            <div class="terms">
+                By continuing, you agree to Treevaq's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+            </div>
+            
+            <div class="help-dropdown" id="helpDropdown">
+                <span class="help-icon">▾</span> Need help?
+            </div>
+            
+            <div class="help-dropdown-content" id="helpContent">
+                <a href="#">Forgot Password</a>
+                <a href="#">Other sign-in issues</a>
+                <a href="#">Sign in with mobile phone</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="business-section">
+                <strong>Buying for work?</strong>
+                <div><a href="#" class="business-link">Shop on Treevaq Business</a></div>
+            </div>
+        </form>
+    </div>
+    
+    <div>
+        <div style="text-align: center; margin-bottom: 10px; color: #666;">New to Treevaq?</div>
+        <a href="reg.html" class="create-account-btn">Create your Treevaq account</a>
+    </div>
+    
+    <div class="eco-footer">
+        <p>Reducing our carbon footprint, one purchase at a time.</p>
+        <p>🌱 All packaging is 100% recycled and biodegradable 🌱</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            const passwordSection = document.getElementById('passwordSection');
+            const continueBtn = document.getElementById('continueBtn');
+            const loginForm = document.getElementById('loginForm');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const helpDropdown = document.getElementById('helpDropdown');
+            const helpContent = document.getElementById('helpContent');
+            const toast = document.getElementById('toast');
+            
+            let emailValidated = false;
+            
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            // Phone validation (simple version)
+            function validatePhone(phone) {
+                const re = /^\d{10,15}$/;
+                return re.test(String(phone).replace(/[^0-9]/g, ''));
+            }
+            
+            // Show toast message
+            function showToast(message) {
+                toast.textContent = message;
+                toast.style.display = 'block';
+                
+                // Hide toast after 3 seconds
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Handle form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!emailValidated) {
+                    // First step: validate email
+                    const emailValue = emailInput.value.trim();
+                    if (validateEmail(emailValue) || validatePhone(emailValue)) {
+                        emailValidated = true;
+                        passwordSection.style.display = 'block';
+                        emailInput.readOnly = true;
+                        continueBtn.textContent = 'Sign in';
+                        emailError.style.display = 'none';
+                    } else {
+                        emailError.style.display = 'block';
+                    }
+                } else {
+                    // Second step: validate password and submit
+                    const passwordInput = document.getElementById('password');
+                    if (passwordInput.value.length >= 6) {
+                        // Simulating successful login
+                        showToast('Signing in... Please wait');
+                        
+                        // Simulate API call with setTimeout
+                        setTimeout(() => {
+                            window.location.href = 'E_com2.html';
+                        }, 2000);
+                    } else {
+                        passwordError.style.display = 'block';
+                    }
+                }
+            });
+            
+            // Toggle help dropdown
+            helpDropdown.addEventListener('click', function() {
+                helpContent.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!helpDropdown.contains(event.target) && !helpContent.contains(event.target)) {
+                    helpContent.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

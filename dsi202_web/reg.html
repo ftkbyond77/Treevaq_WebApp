@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treevaq - Create Account</title>
+    <style>
+        :root {
+            --primary-green: #2e8b57;
+            --light-green: #8fbc8f;
+            --dark-green: #006400;
+            --accent-green: #98fb98;
+            --background: #f5f5f5;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .logo-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--primary-green);
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            max-width: 90%;
+            margin-bottom: 40px;
+            border-top: 5px solid var(--primary-green);
+        }
+        
+        h1 {
+            margin-top: 0;
+            color: var(--dark-green);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-green);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 5px rgba(46, 139, 87, 0.3);
+        }
+        
+        .signup-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .signup-btn:hover {
+            background-color: var(--dark-green);
+        }
+        
+        .signin-btn {
+            background-color: white;
+            color: var(--dark-green);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .signin-btn:hover {
+            background-color: #f5f5f5;
+            border-color: var(--primary-green);
+        }
+        
+        .terms {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .terms a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        
+        .divider {
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+        
+        .eco-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--dark-green);
+            text-align: center;
+        }
+        
+        .eco-badge {
+            background-color: var(--light-green);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .password-strength {
+            height: 5px;
+            border-radius: 5px;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.5s, fadeOut 0.5s 2.5s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes slideIn {
+            from {transform: translateX(100%); opacity: 0;}
+            to {transform: translateX(0); opacity: 1;}
+        }
+        
+        @keyframes fadeOut {
+            from {opacity: 1;}
+            to {opacity: 0;}
+        }
+        
+        .password-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .plant-tree-option {
+            background-color: #f0f8f0;
+            border: 1px solid var(--light-green);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .plant-tree-title {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-green);
+        }
+        
+        .plant-tree-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">
+            <span class="logo-icon">🌱</span> Treevaq
+        </div>
+        <div class="eco-badge">Sustainable Shopping</div>
+    </div>
+    
+    <div id="toast" class="toast"></div>
+    
+    <div class="form-container">
+        <form id="signupForm">
+            <h1>Create account</h1>
+            
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="First and last name" required>
+            <div id="nameError" class="error-message">Please enter your name</div>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error-message">Please enter a valid email address</div>
+            
+            <label for="mobile">Mobile number (optional)</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="For delivery updates">
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="At least 6 characters" required>
+            <div class="password-info">Passwords must be at least 6 characters and include a number or special character</div>
+            
+            <div class="password-strength">
+                <div id="passwordStrengthBar" class="password-strength-bar"></div>
+            </div>
+            <div id="passwordError" class="error-message">Password must be at least 6 characters</div>
+            
+            <label for="confirmPassword">Re-enter password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div id="confirmPasswordError" class="error-message">Passwords don't match</div>
+            
+            <div class="plant-tree-option">
+                <div class="plant-tree-title">
+                    <span class="plant-tree-icon">🌳</span> Plant a tree with your sign-up
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="plantTree" name="plantTree" checked>
+                    <label for="plantTree">Yes, plant a tree on my behalf ($1 will be donated to reforestation efforts)</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="signup-btn">Create your Treevaq account</button>
+            
+            <div class="terms">
+                By creating an account, you agree to Treevaq's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div style="text-align: center; margin-bottom: 10px;">
+                Already have an account? <a href="index.html" style="color: var(--primary-green); text-decoration: none;">Sign in</a>
+            </div>
+        </form>
+    </div>
+    
+    <div class="eco-footer">
+        <p>Reducing our carbon footprint, one purchase at a time.</p>
+        <p>🌱 All packaging is 100% recycled and biodegradable 🌱</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const signupForm = document.getElementById('signupForm');
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const passwordStrengthBar = document.getElementById('passwordStrengthBar');
+            const toast = document.getElementById('toast');
+            
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            // Password strength check
+            function checkPasswordStrength(password) {
+                let strength = 0;
+                
+                if (password.length >= 6) {
+                    strength += 25;
+                }
+                
+                if (password.length >= 8) {
+                    strength += 25;
+                }
+                
+                if (/[0-9]/.test(password)) {
+                    strength += 25;
+                }
+                
+                if (/[^A-Za-z0-9]/.test(password)) {
+                    strength += 25;
+                }
+                
+                return strength;
+            }
+            
+            // Show toast message
+            function showToast(message) {
+                toast.textContent = message;
+                toast.style.display = 'block';
+                
+                // Hide toast after 3 seconds
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Update password strength bar
+            passwordInput.addEventListener('input', function() {
+                const strength = checkPasswordStrength(this.value);
+                passwordStrengthBar.style.width = strength + '%';
+                
+                // Change color based on strength
+                if (strength < 50) {
+                    passwordStrengthBar.style.backgroundColor = '#e74c3c'; // Weak (red)
+                } else if (strength < 75) {
+                    passwordStrengthBar.style.backgroundColor = '#f39c12'; // Medium (orange)
+                } else {
+                    passwordStrengthBar.style.backgroundColor = '#27ae60'; // Strong (green)
+                }
+            });
+            
+            // Form validation
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Validate name
+                if (nameInput.value.trim() === '') {
+                    nameError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    nameError.style.display = 'none';
+                }
+                
+                // Validate email
+                if (!validateEmail(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    emailError.style.display = 'none';
+                }
+                
+                // Validate password
+                if (passwordInput.value.length < 6) {
+                    passwordError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    passwordError.style.display = 'none';
+                }
+                
+                // Confirm passwords match
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    confirmPasswordError.style.display = 'none';
+                }
+                
+                // If form is valid, submit
+                if (isValid) {
+                    showToast('Creating your account... Please wait');
+                    
+                    // Simulate API call with setTimeout
+                    setTimeout(() => {
+                        // Check if tree planting option is selected
+                        const plantTree = document.getElementById('plantTree').checked;
+                        
+                        if (plantTree) {
+                            showToast('Account created! A tree will be planted on your behalf');
+                        } else {
+                            showToast('Account created successfully!');
+                        }
+                        
+                        // Normally here you would send the form data to your server
+                        // This is just a simulation for demonstration purposes
+                        console.log('Account created with details:', {
+                            name: nameInput.value,
+                            email: emailInput.value,
+                            mobile: document.getElementById('mobile').value,
+                            plantTree: plantTree
+                        });
+                        
+                        // Redirect to login page after 2 seconds
+                        setTimeout(() => {
+                            window.location.href = 'E_com2.html';
+                        }, 2000);
+                                            }, 1500);
+                                        }
+                                    });
+                                });
+    </script>
+</body>
+</html>

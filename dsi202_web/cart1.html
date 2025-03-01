@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treevaq Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">🌱Treevaq</div>
+            <div class="icons">              
+                <a href="profile.html" target="_blank">Profile</a> | <a href="order1.html">Order</a>
+                <select>
+                    <option>EN</option>
+                    <option>TH</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <section>
+    <div class="cart-container">
+        <h2>🌱 Treevaq | Cart</h2>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search product...">
+            <button>🔍</button>
+        </div>
+
+        <div class="cart-header">
+            <span>Product</span>
+            <span>Price/Piece</span>
+            <span>Amount</span>
+            <span>Total</span>
+            <span>Action</span>
+        </div>
+
+        <div class="cart-item">
+            <input type="checkbox">
+            <div class="product-info">
+                <img src="photo\shirt1.jpg" alt="Product 1">
+                <p>T-Shirt</p>
+            </div>
+            <span class="price">$20 <del>$65</del></span>
+            <div class="quantity">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+            <span class="total">$20</span>
+            <button class="remove">Remove</button>
+        </div>
+
+        <div class="cart-item">
+            <input type="checkbox">
+            <div class="product-info">
+                <img src="photo\shirt1.jpg" alt="Product 2">
+                <p>T-Shirt (Supreme)
+            </div>
+            <span class="price">$120 <del>$550</del></span>
+            <div class="quantity">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+            <span class="total">$120</span>
+            <button class="remove">Remove</button>
+        </div>
+
+        <div class="cart-footer">
+            <input type="checkbox"> <label>Select All</label>
+            <span class="total-price">Total: $140</span>
+            <button class="buy-now" onclick="location.href='payment1.html'">Buy Now</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="view_product1.css">
+    <script>
+        let totalStock = 190; // จำนวนสินค้าทั้งหมด
+        let currentImageIndex = 0;
+        const images = ['Img1', 'Img2', 'Img3', 'Img4']; // เปลี่ยนตามชื่อรูปจริง
+
+        function updateStock() {
+            let qty = document.getElementById('quantity').value;
+            let stockInfo = document.querySelector('.stock-info');
+            let remainingStock = totalStock - qty;
+            stockInfo.textContent = `(${remainingStock} in stock)`; // อัพเดตจำนวนสินค้าที่เหลือ
+        }
+
+        function changeImage(direction) {
+            const imagePlaceholder = document.querySelector('.image-placeholder');
+
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+            } else if (direction === 'prev') {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            }
+
+            imagePlaceholder.textContent = images[currentImageIndex]; // แสดงชื่อภาพที่เลือก
+        }
+
+        function decreaseQuantity() {
+            let qty = document.getElementById('quantity');
+            if (qty.value > 1) {
+                qty.value--;
+                updateStock(); // อัพเดตจำนวนสินค้าที่เหลือหลังจากลด
+            }
+        }
+
+        function increaseQuantity() {
+            let qty = document.getElementById('quantity');
+            if (qty.value < totalStock) {
+                qty.value++;
+                updateStock(); // อัพเดตจำนวนสินค้าที่เหลือหลังจากเพิ่ม
+            }
+        }
+
+        function toggleZoom() {
+            let image = document.querySelector('.image-placeholder');
+            image.classList.toggle('zoomed');
+        }
+
+        function validateSelection() {
+            const colorSelect = document.querySelector('.color-select');
+            const warningMessage = document.querySelector('.warning');
+
+            if (colorSelect.value === "") {
+                warningMessage.style.display = "inline"; // แสดงข้อความเตือน
+            } else {
+                warningMessage.style.display = "none"; // ซ่อนข้อความเตือน
+            }
+        }
+
+        function checkForm() {
+            const colorSelect = document.querySelector('.color-select').value;
+            const warningMessage = document.querySelector('.warning');
+            if (colorSelect === "") {
+                warningMessage.style.display = "inline";
+                return false; // ป้องกันการเพิ่มสินค้า
+            }
+            return true; // อนุญาตให้ดำเนินการต่อ
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">🌱Treevaq</div>
+            <input type="text" class="search-bar" placeholder="Search...">
+            <div class="icons">
+                <a href="cart1.html" target="_blank" class="cart-link">
+                    <span class="cart-icon">🛒</span>
+                </a>
+                <a href="profile.html" target="_blank">Profile</a> | <a href="order1.html">Order</a>
+                <select>
+                    <option>EN</option>
+                    <option>TH</option>
+                </select>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="#">All</a>
+            <a href="#">Today's Deal</a>
+            <a href="#">Customer Service</a>
+            <a href="#">Registry</a>
+            <a href="seller1.html" target="_blank">Sell</a>
+        </nav>
+    </header>
+    <section>
+    <div class="container">
+        <div class="product">
+            <div class="image-section">
+                <div class="image-placeholder" onclick="toggleZoom()">Image</div>
+                <div class="image-navigation">
+                    <button class="prev-btn" onclick="changeImage('prev')">←</button>
+                    <div class="thumbnail-container">
+                        <div class="thumbnail">Img1</div>
+                        <div class="thumbnail">Img2</div>
+                        <div class="thumbnail">Img3</div>
+                        <div class="thumbnail">Img4</div>
+                    </div>
+                    <button class="next-btn" onclick="changeImage('next')">→</button>
+                </div>
+            </div>
+            <div class="details">
+                <h2>Treevaq T-Shirt</h2>
+                <p>Every thread tells a story—our sustainable clothing is crafted from natural fibers, ensuring comfort while caring for the planet. By choosing our eco-friendly apparel, you're not just wearing a shirt; you're making a statement for a greener future. Join us in redefining fashion—one conscious choice at a time.</p>
+                <p class="price">$1099.99 <span style="text-decoration: line-through; color: gray;">$1399.99</span> (-21%)</p>
+                <p>⭐ 4.5 | 1,826 ratings</p>
+                <p><b>Sold:</b> 18 pieces</p>
+
+                <!-- เพิ่มตัวเลือกสี -->
+                <select class="color-select" onchange="validateSelection()">
+                    <option value="">Select Color</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="black">Black</option>
+                </select>
+                <p class="warning">กรุณาเลือกตัวเลือกสินค้าก่อน</p> <!-- ข้อความเตือน -->
+
+                <div class="quantity">
+                    <button onclick="decreaseQuantity()">-</button>
+                    <input type="text" id="quantity" value="1" readonly>
+                    <button onclick="increaseQuantity()">+</button>
+                    <span class="stock-info">(190 in stock)</span> <!-- เพิ่มจำนวนที่เหลือ -->
+                </div>
+                <div class="buttons">
+                    <button class="add-cart" onclick="return checkForm()">Add to Cart</button>
+                    <button class="buy-now" onclick="return checkForm()">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+</html>

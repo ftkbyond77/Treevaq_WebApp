@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treevaq - Orders</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #4CAF50; /* เขียวเข้ม */
+            color: white;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            padding: 5px;
+            border: 1px solid #388E3C; /* ขอบสีเขียวเข้ม */
+            border-radius: 5px;
+        }
+        
+        /* Icons */
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icons a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .icons a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Navigation Menu */
+        .menu {
+            background: #66BB6A; /* สีเขียวกลาง */
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: #e0f2e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2e7d32;
+        }
+        
+        .profile-info h2 {
+            margin-bottom: 5px;
+            color: #2e7d32;
+        }
+        
+        .eco-points {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a.active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .nav-links a:hover {
+            background-color: #f0f7f0;
+        }
+        
+        .nav-icon {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .section-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid #2e7d32;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px 0;
+        }
+        
+        .order-list {
+            list-style: none;
+        }
+        
+        .order-item {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-products {
+            margin: 10px 0;
+        }
+        
+        .order-product {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .product-img {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f7f0;
+            margin-right: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+        }
+        
+        .order-total {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .status-delivered {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .status-processing {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .status-shipped {
+            color: #2196F3;
+            font-weight: bold;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background-color: #2e7d32;
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #2e7d32;
+            color: #2e7d32;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f7f0;
+            color: #2e7d32;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .order-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .search-orders {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+        
+        .eco-impact {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #555;
+            border-radius: 3px;
+        }
+        
+        .pagination a.active {
+            background-color: #2e7d32;
+            color: white;
+            border-color: #2e7d32;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .sidebar, .main-content {
+                width: 100%;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">🌱Treevaq</div>
+            <input type="text" class="search-bar" placeholder="Search for eco-friendly products...">
+            <div class="icons">
+                <a href="cart1.html" target="_blank" class="cart-link">
+                    <span class="cart-icon">🛒</span>
+                </a>               
+                <a href="#">Thananan</a> | <a href="#">Order</a>
+                <select>
+                    <option>EN</option>
+                    <option>TH</option>
+                </select>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="#">All</a>
+            <a href="e2e2.html" target="_blank">Best Sellers</a>
+            <a href="#">Sustainable Licenses</a>
+            <a href="#">Eco Promotions</a>
+            <a href="#">Green Services</a>
+            <a href="#">Recycled Electronics</a>
+            <a href="#">Mystery Box</a>
+            <a href="seller1.html" target="_blank">Sell</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="sidebar">
+                <div class="profile-header">
+                    <div class="profile-pic">TN</div>
+                    <div class="profile-info">
+                        <h2>Thananan</h2>
+                        <p>thananan@email.com</p>
+                        <span class="eco-points">🍃 240 Eco Points</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="profile.html"><span class="nav-icon">👤</span> Profile</a></li>
+                    <li><a href="#" class="active"><span class="nav-icon">📦</span> Orders</a></li>
+                    <li><a href="#"><span class="nav-icon">❤️</span> List Orders</a></li>
+                    <li><a href="#"><span class="nav-icon">🌱</span> Environmental impact</a></li>
+                    <li><a href="#"><span class="nav-icon">🔔</span> Notification</a></li>
+                    <li><a href="#"><span class="nav-icon">⚙️</span> Setting</a></li>
+                    <li><a href="account1.html" style="color: #d32f2f;"><span class="nav-icon">🚪</span> Log-out</a></li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <h3 class="section-title">My Orders</h3>
+                
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option>All Orders</option>
+                            <option>Last 30 days</option>
+                            <option>Last 6 months</option>
+                            <option>2024</option>
+                            <option>2023</option>
+                        </select>
+                        
+                        <select class="filter-select">
+                            <option>All Status</option>
+                            <option>Processing</option>
+                            <option>Shipped</option>
+                            <option>Delivered</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                    
+                    <input type="text" class="search-orders" placeholder="Search orders...">
+                </div>
+                
+                <ul class="order-list">
+                    <li class="order-item">
+                        <div class="order-header">
+                            <div>
+                                <strong>Order #TRV283629</strong>
+                                <span class="eco-impact">🌱 -12.4kg CO₂</span>
+                                <div>Placed on 15 Feb 2025</div>
+                            </div>
+                            <div class="status-delivered">Delivered</div>
+                        </div>
+                        
+                        <div class="order-products">
+                            <div class="order-product">
+                                <div class="product-img">🌿</div>
+                                <div>
+                                    <strong>Bamboo Toothbrush Set (4 pcs)</strong>
+                                    <div>Qty: 2</div>
+                                    <div>฿280.00</div>
+                                </div>
+                            </div>
+                            
+                            <div class="order-product">
+                                <div class="product-img">🧴</div>
+                                <div>
+                                    <strong>Organic Shampoo Bar</strong>
+                                    <div>Qty: 1</div>
+                                    <div>฿150.00</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-total">
+                            Total: ฿710.00
+                        </div>
+                        
+                        <div class="order-actions">
+                            <button class="btn btn-outline">Write Review</button>
+                            <button class="btn btn-primary">Buy Again</button>
+                        </div>
+                    </li>
+                    <li class="order-item">
+                        <div class="order-header">
+                            <div>
+                                <strong>Order #TRV283630</strong>
+                                <span class="eco-impact">🌱 -8.2kg CO₂</span>
+                                <div>Placed on 10 Feb 2025</div>
+                            </div>
+                            <div class="status-shipped">Shipped</div>
+                        </div>
+                        
+                        <div class="order-products">
+                            <div class="order-product">
+                                <div class="product-img">🌍</div>
+                                <div>
+                                    <strong>Eco-Friendly Water Bottle</strong>
+                                    <div>Qty: 1</div>
+                                    <div>฿450.00</div>
+                                </div>
+                            </div>
+                            
+                            <div class="order-product">
+                                <div class="product-img">🍃</div>
+                                <div>
+                                    <strong>Reusable Grocery Bags (5 pcs)</strong>
+                                    <div>Qty: 1</div>
+                                    <div>฿120.00</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-total">
+                            Total: ฿570.00
+                        </div>
+                        
+                        <div class="order-actions">
+                            <button class="btn btn-outline">Track Order</button>
+                            <button class="btn btn-primary">Buy Again</button>
+                        </div>
+                    </li>
+                    
+                    <li class="order-item">
+                        <div class="order-header">
+                            <div>
+                                <strong>Order #TRV283631</strong>
+                                <span class="eco-impact">🌱 -5.8kg CO₂</span>
+                                <div>Placed on 20 Jan 2025</div>
+                            </div>
+                            <div class="status-processing">Processing</div>
+                        </div>
+                        
+                        <div class="order-products">
+                            <div class="order-product">
+                                <div class="product-img">🍃</div>
+                                <div>
+                                    <strong>Organic Cotton T-Shirt</strong>
+                                    <div>Qty: 2</div>
+                                    <div>฿550.00</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-total">
+                            Total: ฿550.00
+                        </div>
+                        
+                        <div class="order-actions">
+                            <button class="btn btn-outline">Contact Support</button>
+                            <button class="btn btn-primary">Buy Again</button>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+                    
